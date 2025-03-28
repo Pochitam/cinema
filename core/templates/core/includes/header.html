@@ -1,0 +1,20 @@
+<!-- <header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">главная</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">жанры</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">проофиль</a></li>
+    </ul>
+  </header> -->
+  <header class="d-flex flex-wrap align-items-center justify-content-md-around py-3 mb-4 border-bottom">
+    <button id="theme-toggle" class="btn btn-primary mr-3">Переключить тему</button>
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">главная</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark">жанры</a></li>
+      <li><a href="{% url 'profile' %}" class="nav-link px-2 link-dark">проофиль</a></li>
+    </ul>
+
+    <div class="col-md-3 text-end">
+      <a href="{% url 'sign_in' %}" type="button" class="btn btn-outline-primary me-2">Войти</a>
+      <a href="{% url 'sign_up' %}" type="button" class="btn btn-primary">Зарегистрироваться</a>
+    </div>
+  </header>

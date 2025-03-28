@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block title %} {% endblock %}
+
+{% block section %}
+<div style="width: 400px;" class="mx-auto">
+    <h1 class="text-center">Вход</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label" for="username">Логин</label>
+            <input class="form-control" type="text" name="username" id="username">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="password">Пароль</label>
+            <input class="form-control" type="password" name="password" id="password">
+        </div>
+        <button type="submit" class="btn btn-primary d-flex justify-content-center mx-auto mt-5" style="width: 150px;">Войти</button>
+    </form>
+</div>
+{% endblock %}

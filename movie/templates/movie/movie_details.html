@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% block title %}о фильме{% endblock %}
+
+
+{% block section %}
+    <div class="container mt-3" >
+        <div class="d-flex justify-content-center align-items-center mb-5">
+            <img src="{{film.poster.url}}" alt="" class="me-4">
+            <div class="text-start">
+                <h1  style="width:600px;">{{film.title}}</h1>
+                <p style="width: 600px;">{{film.description}}</p>
+            </div>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+        {% if film.movie.url != Null %}
+        <video style="width:500px;" class="mb-5" controls>
+            <source src="{{film.movie.url}}">
+        </video>
+        {% endif %}
+        <h2 class="mb-5">Коментарии</h2>
+        <form action="{% url 'leave_review' %}" method="post" class="d-flex flex-column" style="height: 150px; width: 500px;">
+            {% csrf_token %}
+            <input type="hidden" value="{{film.id}}" name="movie_id">
+            <textarea name="review_text" id="" cols="30" rows="10" class="form-text mb-3" ></textarea>
+            <button class="btn btn-primary" type="submit"><img src="" alt="">отправить</button>
+        </form>
+        <div class="fc gap-2 mt-3">
+            {% for reviwe in reviwes %}
+                <div class="border-secondary rounded-2 border-1 border p-2 mb-2">
+                    <h6 class=" fw-6">{{reviwe.author.username}}</h6>
+                    <p >{{reviwe.text}}</p>
+                    <div class="frsc mt-1 gap-2">
+                        <span class="mt-auto text-secondary fs-6">{{reviwe.created_at}}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+{% endblock %}

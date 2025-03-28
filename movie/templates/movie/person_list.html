@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block section %}
+    <div class="d-flex flex-wrap justify-content-around ">
+        {% for person in persons %}
+            <div class="card mb-5" style="width: 18rem;">
+              <a href="#" class="text-decoration-none text-dark">
+                <img src="{{ person.photo.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ person.name }}</h5>
+                </div>
+              </a>
+              </div>
+        {% endfor %}
+        </div>
+{% endblock %}

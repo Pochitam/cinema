@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+{% block title %}профиль{% endblock %}
+
+
+{% block section %}
+<div>
+<div class="d-flex" style="margin-left: 30%;">
+    <img src="{{request.user.photo.url}}" alt="" style="width: 15%; margin-right: 40px;" class="rounded-circle">
+    <div>
+        <h1>{{request.user.username}}</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="avatar"  class="form-control  bg-light border-primary" >
+            <button type="submit" class="btn btn-primary mt-3">Изменить аватарку</button>
+        </form>
+        
+        {% if user.profile.photo %}
+            <p>Текущая аватарка:</p>
+            <img src="{{ user.profile.avatar.url }}" width="150">
+        {% endif %}
+    </div>
+</div>
+<!-- templates/profile.html -->
+
+<div class=" mt-5" >
+    <h2 class="text-center mb-3">Любимые фильмы</h2>
+    <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
+        {%  for movie in request.user.favMovie.all %}
+        <div class="card" style="width: 18rem;">
+                <img src="{{movie.poster.url}}" alt="">
+        
+                <div class="card-body">
+            <h5 class="card-title">{{movie.title}}</h5>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+<div class=" mt-5" >
+    <h2 class="text-center mb-3">Просмотренные фильмы</h2>
+    <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
+        {%  for movie in request.user.watchedMovie.all %}
+        <div class="card mb-2" style="width: 16rem; height: 28rem;">
+                <img src="{{movie.poster.url}}" alt="">
+        
+                <div class="card-body">
+            <h5 class="card-title">{{movie.title}}</h5>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

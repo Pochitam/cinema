@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+{% block title %}жанры{% endblock %}
+
+
+{% block section %}
+    <h1>ЖАНРЫ</h1>
+    <ul class="d-flex flex-column justify-content-center align-items-center">
+        {% for genre in genres %}
+            <li>{{ genre.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
